@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <button onclick="Ejercicio16()">Ejercicio16</button>
+  <button onclick="Ejercicio17()">Ejercicio17</button>
+  <button onclick="Ejercicio18()">Ejercicio18</button>
+  <button onclick="Ejercicio19()">Ejercicio19</button>
+
+  <!-- Sección para subir y visualizar un archivo PDF -->
+  <section id="pdfSection">
+    <h2>Subir Archivo PDF</h2>
+    <input type="file" id="pdfInput" accept="application/pdf">
+    <br><br>
+    <iframe id="pdfViewer" style="width: 100%; height: 600px;" frameborder="0"></iframe>
+  </section>
+
+  <script src="script.js"></script>
+  <script>
+    const pdfInput = document.getElementById('pdfInput');
+    const pdfViewer = document.getElementById('pdfViewer');
+
+    pdfInput.addEventListener('change', function(event) {
+      const file = event.target.files[0];
+      if (file && file.type === "application/pdf") {
+        const fileURL = URL.createObjectURL(file);
+        pdfViewer.src = fileURL;
+      } else {
+        alert("Por favor, selecciona un archivo PDF.");
+      }
+    });
+  </script>
+  
+</body>
+</html>
